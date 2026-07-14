@@ -3,6 +3,11 @@ CREATE DATABASE BD_HR_ANALYTICS;
 
 USE BD_HR_ANALYTICS;
 
+--> DDL ---> Create
+--> DML ---> Alter, insert into, ctas, etc
+--> DQL ---> Select, Join, Group by, order by
+
+
 ---------------------------------
 -- CARGA EMPLEADOS
 ---------------------------------
@@ -10,7 +15,7 @@ IF OBJECT_ID('Employee', 'U') IS NOT NULL
     DROP TABLE Employee;
 
 CREATE TABLE Employee (
-    -- Alfanumérico por el formato '3012-1A41'
+    -- Alfanumï¿½rico por el formato '3012-1A41'
     EmployeeID              NVARCHAR(50) PRIMARY KEY, 
     FirstName               NVARCHAR(100),
     LastName                NVARCHAR(100),
@@ -18,7 +23,7 @@ CREATE TABLE Employee (
     Age                     INT,
     BusinessTravel          NVARCHAR(100),
     Department              NVARCHAR(100),
-    [DistanceFromHome (KM)] INT, -- Entre corchetes por el espacio y paréntesis
+    [DistanceFromHome (KM)] INT, -- Entre corchetes por el espacio y parï¿½ntesis
     State                   NVARCHAR(10), 
     Ethnicity               NVARCHAR(100),
     Education               INT, -- Es un nivel (1-5)
@@ -37,12 +42,45 @@ CREATE TABLE Employee (
 );
 
 BULK INSERT Employee
-FROM 'G:\Mi unidad\HOME\CURSO\PROYECTOS\SQL-Project-HR-Analytics-Attrition-and-Performance-main\SQL-Project-HR-Analytics\Employee.csv' -- Reemplaza con la ruta real
+FROM 'D:\ArchivosJP\DataAcademy\ProyectoSQL_HR_JP\SQL-SERVER-HR-ANALYTICS\Data\Employee.csv' -- Reemplaza con la ruta real
 WITH (
     FORMAT = 'CSV',
     FIRSTROW = 2,           -- Ignora el encabezado del CSV
     FIELDTERMINATOR = ',',  -- Cambia por ';' si tu CSV usa punto y coma
-    ROWTERMINATOR = '\n' -- Salto de línea estándar (LF) o '\n'
+    ROWTERMINATOR = '\n' -- Salto de lï¿½nea estï¿½ndar (LF) o '\n'
    -- ENCODING = 'UTF-8'      -- Importante si tienes acentos o tildes
  
 );
+
+SELECT *
+FROM Employee
+IF OBJECT_ID('Employee', 'U') IS NOT NULL
+    DROP TABLE PerformanceRating;
+
+
+CREATE TABLE PerformanceRating (
+    PerformanceID                 NVARCHAR(20) PRIMARY KEY, -- Ej: 'PR01'
+    EmployeeID                    NVARCHAR(50),             -- Debe coincidir con el formato de tu otra tabla
+    ReviewDate                    DATE,                     -- SQL Server maneja formato YYYY-MM-DD
+    EnvironmentSatisfaction       INT,
+    JobSatisfaction               INT,
+    RelationshipSatisfaction      INT,
+    TrainingOpportunitiesWithinYear INT,
+    TrainingOpportunitiesTaken    INT,
+    WorkLifeBalance               INT,
+    SelfRating                    INT,
+    ManagerRating                 INT
+);
+
+
+BULK INSERT PerformanceRating
+FROM 'D:\ArchivosJP\DataAcademy\ProyectoSQL_HR_JP\SQL-SERVER-HR-ANALYTICS\Data\PerformanceRating.csv' -- Reemplaza con la ruta real
+WITH (
+    FORMAT = 'CSV',
+    FIRSTROW = 2,           -- Ignora el encabezado del CSV
+    FIELDTERMINATOR = ',',  -- Cambia por ';' si tu CSV usa punto y coma
+    ROWTERMINATOR = '\n' -- Salto de lï¿½nea estï¿½ndar (LF) o '\n'
+       -- Importante si tienes acentos o tildes
+ 
+);
+

@@ -57,7 +57,9 @@ FROM Employee
 IF OBJECT_ID('Employee', 'U') IS NOT NULL
     DROP TABLE PerformanceRating;
 
-
+---------------------------------
+-- CARGA PERFORMANCE RATING
+---------------------------------
 CREATE TABLE PerformanceRating (
     PerformanceID                 NVARCHAR(20) PRIMARY KEY, -- Ej: 'PR01'
     EmployeeID                    NVARCHAR(50),             -- Debe coincidir con el formato de tu otra tabla

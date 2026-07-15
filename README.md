@@ -5,11 +5,12 @@
 El presente proyecto de HR Analytics emplea técnicas avanzadas de procesamiento de datos en SQL Server para resolver uno de los mayores desafíos organizacionales: la rotación de personal. Mediante el análisis riguroso de métricas históricas de Recursos Humanos, el estudio identifica los factores críticos y patrones subyacentes que impulsan la fuga de talento, transformando datos crudos en conocimiento estratégico. Esto permitirá a la dirección tomar decisiones informadas, diseñar estrategias de retención altamente efectivas, mitigar costos operativos y asegurar la continuidad de equipos de alto rendimiento.
 ## Estructura
 - [Sobre los datos](#sobre-los-datos)
+- [Analisis exploratorio de Datos e Insights](#Análisis-exploratorio-de-Datos-e-Insights)
 
-## sobre-los-datos
+## sobre los datos
 Los datos originales, junto con una explicación de cada columna, se pueden encontrar [aquí](https://www.kaggle.com/datasets/mahmoudemadabdallah/hr-analytics-employee-attrition-and-performance/data?select=Employee.csv).
 
-## Análisis exploratorio de Datos e Insights
+## Analisis exploratorio de Datos e Insights
 ### 1. Cuál es la antigüedad promedio de los empleados en cada departamento?
 
 ````sql
